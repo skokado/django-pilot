@@ -25,8 +25,8 @@ phases:
       - cd sqlite-autoconf-3330000/
       - ./configure --prefix=/usr/local
       - make
-      - sudo make install
-      - sudo find /usr/ -name sqlite3
+      - make install
+      - find /usr/ -name sqlite3
   build:
     commands:
       - echo "Run your tests"
