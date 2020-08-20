@@ -34,6 +34,7 @@ phases:
       - echo "Run your tests"
       - cd backend/
       - python manage.py collectstatic
+      - cd ..
   post_build:
     commands:
       - ls -l
