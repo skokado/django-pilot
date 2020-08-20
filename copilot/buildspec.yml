@@ -19,6 +19,7 @@ phases:
       - pip install --upgrade pip pipenv
       - cd backend/
       - pipenv install --system --skip-lock
+      - echo "SECRET_KEY = '$SECRET_KEY'" > backend/local_settings.py
       - python manage.py collectstatic
   post_build:
     commands:
