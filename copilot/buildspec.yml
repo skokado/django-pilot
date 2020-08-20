@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       docker: 18
       ruby: 2.6
+      python: 3.7
     commands:
       - echo "cd into $CODEBUILD_SRC_DIR"
       - cd $CODEBUILD_SRC_DIR
@@ -13,8 +14,6 @@ phases:
       - mv ./copilot-linux-v0.3.0 ./copilot-linux
       - chmod +x ./copilot-linux
   build:
-    runtime-versions:
-      python: 3.7
     commands:
       - echo "Run your tests"
       - pip install --upgrade pip pipenv
