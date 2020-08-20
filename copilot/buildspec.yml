@@ -21,8 +21,8 @@ phases:
       - pipenv install --system --skip-lock
       - echo $SECRET_KEY
       - ls -l
-      - ls -l backend/
       - echo "SECRET_KEY = '$SECRET_KEY'" > backend/local_settings.py
+      - ls -l backend/
       - pip freeze
       - python manage.py check
       - python manage.py collectstatic
