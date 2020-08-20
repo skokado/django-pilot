@@ -15,7 +15,7 @@ source:
   # has the following properties: repository, branch.
   properties:
     access_token_secret: github-token-django-pilot-django-pilot
-    branch: master
+    branch: develop
     repository: https://github.com/skokado/django-pilot
 
 # The deployment section defines the order the pipeline will deploy

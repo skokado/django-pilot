@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       docker: 18
       ruby: 2.6
+      python: 3.7
     commands:
       - echo "cd into $CODEBUILD_SRC_DIR"
       - cd $CODEBUILD_SRC_DIR
@@ -12,10 +13,28 @@ phases:
       - wget https://ecs-cli-v2-release.s3.amazonaws.com/copilot-linux-v0.3.0
       - mv ./copilot-linux-v0.3.0 ./copilot-linux
       - chmod +x ./copilot-linux
+      # Install python packages
+      - pip install --upgrade pip pipenv
+      - cd backend/
+      - pipenv install --system --skip-lock
+      - echo "SECRET_KEY = '$SECRET_KEY'" > backend/local_settings.py
+      - cd ..
+      # Install SQLite3
+      - wget https://www.sqlite.org/2020/sqlite-autoconf-3330000.tar.gz
+      - tar xzvf sqlite-autoconf-3330000.tar.gz
+      - cd sqlite-autoconf-3330000/
+      - ./configure --prefix=/usr/local
+      - make
+      - make install
+      - export LD_LIBRARY_PATH="/usr/local/lib"
+      - find /usr/ -name sqlite3
+      - cd ..
   build:
     commands:
       - echo "Run your tests"
-      # - make test
+      - cd backend/
+      - python manage.py collectstatic
+      - cd ..
   post_build:
     commands:
       - ls -l
