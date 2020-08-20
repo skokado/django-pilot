@@ -26,6 +26,7 @@ phases:
       - ./configure --prefix=/usr/local
       - make
       - make install
+      - export LD_LIBRARY_PATH="/usr/local/lib"
       - find /usr/ -name sqlite3
       - cd ..
   build:
