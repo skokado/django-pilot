@@ -28,8 +28,9 @@ test, prod 環境など用途に応じて環境を分離できる。
 ## Pipeline
 
 Git リポジトリへの push をトリガーに CI/CD を行えるパイプラインを定義できる。
-実体は CodePipeline ぽい。
-未検証
+実体は CodePipeline の様子。
+事前に GitHub Personal Access Token を発行しておく。`repo`, `admin:repo_hook`にチェックを入れる
+
 
 # コマンド
 

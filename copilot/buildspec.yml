@@ -13,9 +13,14 @@ phases:
       - mv ./copilot-linux-v0.3.0 ./copilot-linux
       - chmod +x ./copilot-linux
   build:
+    runtime-versions:
+      python: 3.7
     commands:
       - echo "Run your tests"
-      # - make test
+      - pip install --upgrade pip pipenv
+      - cd backend/
+      - pipenv install --system --skip-lock
+      - python manage.py collectstatic
   post_build:
     commands:
       - ls -l
