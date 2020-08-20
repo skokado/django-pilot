@@ -27,6 +27,7 @@ phases:
       - make
       - make install
       - find /usr/ -name sqlite3
+      - cd ..
   build:
     commands:
       - echo "Run your tests"
